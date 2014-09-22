@@ -10,9 +10,10 @@ $(function(){
 	var isMoving;
 	var bannerHeight = 230;
 	var tID;
+	var $videoItem = $('.movie');
+	var currentVideo = 0;
 
 	var ua = navigator.userAgent;
-	
 	
 	// function
 	function init(){
@@ -37,13 +38,31 @@ $(function(){
 		$currentBanner = $bannerItem.eq(currentIndex);
 		$nextBanner = $bannerItem.eq(nextIndex);
 		
-		$currentBanner.transition({scale:0.3}, 1500);
-		$currentBanner.stop().animate({left:-490, opacity:0}, 1000);
+		console.log(nextIndex);
 		
-		$nextBanner.css({left:490, transform:'scale(0.3,0.3)'});
-		$nextBanner.transition({scale:1.0}, 700);
-		$nextBanner.stop().animate({left:0, opacity:1}, 1000);
-		
+		if(nextIndex <= 4){
+			$currentBanner.stop().animate({
+				left:-320, opacity:0,
+				width:490, height:260
+			}, 1000);
+			
+			$nextBanner.css({left:660, width:490, height:260});
+			$nextBanner.stop().animate({
+				left:0, opacity:1,
+				width:980, height:520
+			}, 1000);
+		} else {
+			$currentBanner.stop().animate({
+				left:-490, opacity:0,
+				width:980, height:520
+			}, 700);
+			
+			$nextBanner.css({left:660, top:0, width:980, height:520});
+			$nextBanner.stop().delay(300).animate({
+				left:0, opacity:1,
+				width:980, height:520
+			}, 1000);
+		}
 		$('.bg').eq(currentIndex).fadeOut();
 		$('.bg').eq(nextIndex).fadeIn();
 		
@@ -54,6 +73,27 @@ $(function(){
 		
 		currentIndex = nextIndex;
 	}
+	
+	function videoInit(){
+		$videoItem.hide();
+		$videoItem.eq(0).show();
+	}
+	function setVideoIndex(){
+		if( currentVideo > 1 ){
+			playVideo(0);
+		}
+		else {
+			playVideo(currentVideo+1);
+		}
+	}
+	
+	function playVideo(nextVideo){
+		$videoItem.eq(currentVideo).fadeOut();
+		$videoItem.eq(nextVideo).fadeIn();
+		
+		currentVideo = nextVideo;
+	}
+	
 
 	// mobile
 	if( ua.toLowerCase().indexOf( 'mobile' ) > 0 ){
@@ -64,9 +104,17 @@ $(function(){
 
 	//rolling
 	init();
-	tID = setInterval(setIndex, 3000);
+	//tID = setInterval(setIndex, 3000);
 	
-	$('.page_dot a').on('click', function(){
+	//video randomize
+	videoInit();
+	vID = setInterval(setVideoIndex, 10000);
+	
+	
+	$('.page_dot a').on('click', function(e){
+		
+		e.preventDefault();
+		
 		if($('.text_area').is(':animated')){return false;}
 		clearInterval(tID);
 		

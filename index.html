@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="css/style.css" />
 <script src="js/lib/jquery-1.11.0.min.js"></script>
 <script src="js/lib/jquery.transit.min.js"></script>
-<!--<script src="js/function.js"></script>-->
 <script src="js/event.js"></script>
 </head>
 <body>
@@ -22,12 +21,26 @@
 	
 	<div class="bg_area">
 		
-		<video preload="auto" autoplay loop class="bg">
-			<source src="video/teaser.mp4" type="video/mp4">
-			Your browser does not support the video tag.
-		</video>
-		
 		<div class="bg"><img src="images/bg_wrap_2.jpg" /></div>
+		
+		<div class="bg">
+			
+			<video class="movie" preload="auto" autoplay loop>
+				<source src="video/teaser.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+			
+			<video class="movie" preload="auto" autoplay loop>
+				<source src="video/volvo.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+			
+			<video class="movie" preload="auto" autoplay loop>
+				<source src="video/makeon.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+		
+		</div>
 		
 		<div class="bg"><img src="images/bg_wrap_3.jpg" /></div>
 		
@@ -76,11 +89,77 @@
 			</div>
 			
 			<div class="text_area">
-				6
+				<div class="info">
+					<div class="info_title"><img src="images/content_6_title.png" /></div>
+					<div class="info_left">
+						<div>
+							<label for="name">Name</label>
+							<input type="text" />
+						</div>
+						<div>
+							<label for="name">Phone</label>
+							<input type="text" />
+						</div>
+					</div>
+					<div class="info_right">
+						<div>
+							<label for="name">E-Mail</label>
+							<input type="text" />
+						</div>
+						<div>
+							<label for="name">Title</label>
+							<input type="text" />
+						</div>
+					</div>
+					<div class="info_content">
+						<label for="name">Content</label>
+						<textarea cols="50" rows="13"></textarea>
+					</div>
+				</div>
 			</div>
 			
 			<div class="text_area">
-				7
+				<div class="info map_wrap">
+					<div class="info_title map"><img src="images/content_7_title.png" /></div>
+					<div id="map-canvas" class="info_content map">
+						
+					</div>
+					<script>
+						function mapInit(){
+							var madison = new google.maps.LatLng(37.519801,127.030968); 
+							var mapOptions = {
+								zoom:18,
+								center: madison
+							};
+							var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+							
+							var marker = new google.maps.Marker({
+								map:map,
+								draggable:true,
+								animation:google.maps.Animation.DROP,
+								position:madison,
+							});
+							
+							var contentStr = '<div><img src="images/logo.png" /></div>';
+							
+							var infoWin = new google.maps.InfoWindow({
+								content: contentStr,
+								maxWidth: 300
+							});
+							
+							infoWin.open(map, marker);
+						}
+						function loadScript(){
+							var script = document.createElement('script');
+							script.type = 'text/javascript';
+							script.src = 'https://maps.googleapis.com/maps/api/js?v3.exp&sensor=false&callback=mapInit';
+							document.body.appendChild(script);
+						}
+						
+						window.onload = loadScript;
+					</script>
+					<div class="contact"><div><img src="images/content_7_contact.png" /></div></div>
+				</div>
 			</div>
 		
 		</div>

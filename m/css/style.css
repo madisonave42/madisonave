@@ -117,10 +117,11 @@ html, body{width:100%; height:100%;}
 
 	.text_crop{width:100%; height:100%; max-width:980px; position:relative; margin:0 auto;}
 		.text_area{width:100%; position:absolute; top:50%; left:0;}
-		.text_area.content_2{top:0; height:100%;}
+		.text_area.content_2{top:0; height:100%; padding:110px 0; box-sizing:border-box;}
 		.text_area>img{width:100%;}
-		.text_area .content_2_wrap{width:100%; max-width:720px; height:100%; margin:0 auto; padding:50px 0; box-sizing:border-box}
-		.text_area .content_2_wrap .content_frame{height:100%; overflow:hidden;}
+		.text_area .content_2_wrap{position:relative; width:100%; max-width:720px; height:100%; margin:0 auto; box-sizing:border-box; overflow:hidden;}
+		.text_area .content_2_wrap .content_frame{/*height:100%;*/ position:absolute; top:0; left:0;}
+		.text_area .content_2_wrap .content_frame img{width:100%;}
 		.info{/*width:648px; margin:50px auto 0;*/padding:10px 30px 0;}
 		.info:after{content:""; display:block; clear:both;}
 		.info label{display:block; float:left; width:55px; height:25px; line-height:25px; margin:0; padding:5px 0 0 0; color:#03e0be; font-size:12px; position:absolute; left:0;}
@@ -167,10 +168,12 @@ html, body{width:100%; height:100%;}
 	.page_dot a.on{background-position:-22px 0;}
 	
 @media all and (max-width:767px){
+/*
 	.logo_area{height:40px;}
 	.page_area{width:35px; height:35px; top:55px; left:20px; margin:0;}
 	.current_page{left:0; top:0;}
-	.total_page{right:0; bottom:0;}
+	.total_page{right:0; bottom:0;}*/
+
 }	
 
 @media all and (min-width:550px) and (max-width:767px){
@@ -179,6 +182,8 @@ html, body{width:100%; height:100%;}
 	.page_area{width:35px; height:35px; top:55px; left:20px; margin:0;}
 	.current_page{left:0; top:0;}
 	.total_page{right:0; bottom:0;}
+	
+	.text_area.content_2{padding:50px 0;}
 	
 	.info{padding:0 75px;}
 	.info input{margin:10px 0 3px;}

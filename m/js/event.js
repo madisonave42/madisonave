@@ -15,8 +15,11 @@ $(function(){
 	var contentWidth;
 
 	var ua = navigator.userAgent;
-	console.log(ua);
+	//console.log(ua);
 	//console.log( ua.toLowerCase().indexOf( 'mobile' ) );
+	
+	
+	
 	//=================================================================================================
 	// function
 	
@@ -48,6 +51,7 @@ $(function(){
 		var winHeight = $(window).height();
 		contentWidth = $('.text_crop').width();
 		
+		console.log(currentIndex);
 		$bannerItem.eq(currentIndex).siblings().css({left:contentWidth, opacity:0});
 		
 		$('.text_area').each(function(i){
@@ -135,6 +139,7 @@ $(function(){
 		
 	});
 	
+	// click dot - page move
 	$('.page_dot a').on('click', function(e){
 		
 		e.preventDefault();
@@ -149,25 +154,67 @@ $(function(){
 			moveRight(clickIndex);
 		}
 		
-		
 	});
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+	var $swpObjContent = $('.text_area');
+	var $swpObjClient = $('.content_frame');
+	var $pageDot = $('.page_dot');
+	
+	var originalLeft = 0;
+	var originalTop = 0;
+	var originalPosition = 0;
+	var oldLeft = 0;
+	var oldTop = 0;
+	var touchedIndex = 0;
+	
+	var swpContent = new Swipe( $swpObjContent );
+	var swpClient = new Swipe( $swpObjClient );
+	
+	// touch event - swipe move
+	// swipe start 
+	$swpObjContent.on('touchstart', function(e){
+		
+		e.preventDefault();
+		touchedIndex = $(this).index();
+		
+		oldLeft = originalLeft = e.originalEvent.touches[0].clientX;
+		oldTop = originalTop = e.originalEvent.touches[0].clientY;
+		originalPosition = $(this).position().left;
+		
+		swpContent.swipeStart($swpObjContent, touchedIndex);
+		
+	});
+	// swipe move
+	$swpObjContent.on('touchmove', function(e){
+		var distanceX = oldLeft - e.originalEvent.touches[0].clientX;
+		var distanceY = oldTop - e.originalEvent.touches[0].clientY;
+		oldLeft = e.originalEvent.touches[0].clientX;
+		oldTop = e.originalEvent.touches[0].clientY;
+		var slope = distanceY / distanceX;
+		if( Math.abs(slope) < 0.5 ) {
+			//e.preventDefault();
+			swpContent.swipeMove( $swpObjContent, distanceX );
+		} else {
+			swpClient.swipeUpDown( $swpObjClient, distanceY );
+		}
+	});
+	
+	// swipe end
+	$swpObjContent.on('touchend', function(e){
+		var diff = originalPosition - $(this).position().left;
+		var nextIndex = swpContent.swipeEnd( $swpObjContent, $pageDot, diff );
+		
+		currentIndex = nextIndex;
+	});
+	
+	// swipe Up & Down end
+	$swpObjClient.on('touchend', function(e){
+		//oldTop = e.originalEvent.touches[0].clientY;
+		//var distanceY = oldTop - e.originalEvent.touches[0].clientY;
+		
+		swpClient.swipeUpDownEnd( $swpObjClient );
+	});
 	
 	
 });

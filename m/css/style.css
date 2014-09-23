@@ -51,7 +51,7 @@ html {
 }
 body {
 	font-family: 'Noto Sans', sans-serif; font-size:13px; color:#fff;
-	line-height: 1;	line-height:1.4\0; letter-spacing:-0.25px;
+	line-height: 1; letter-spacing:-0.25px;
 }
 ol, ul {
 	list-style: none;
@@ -98,50 +98,54 @@ html, body{width:100%; height:100%;}
 
 .bg_area:after{content:""; display:block; width:100%; height:100%; background:url(../images/bg_dot.png); position:absolute; top:0; left:0;}
 
-	.bg{width:100%; min-width:1800px; position:absolute; top:0; left:0; display:none;}
-	.bg img{width:100%;}
+	.bg{width:100%; /*min-width:1800px;*/ height:100%; position:absolute; top:0; left:0; display:none;}
+	.bg.wide img{width:100%; /*height:100%;*/}
+	.bg.narrow img{/*width:100%;*/ height:100%;}
 	.bg .movie{width:100%; min-width:1800px; position:absolute; top:0; left:0;}
 
-.logo_area{width:100%; height:60px; position:absolute; left:0; top:0;}
-	.logo{position:absolute; left:30px; bottom:0;}
-	.sub_logo{position:absolute; right:30px; bottom:0;}
+.logo_area{width:100%; height:50px; position:absolute; left:0; top:0;}
+.logo_area img{width:100%;}
+	.logo{position:absolute; width:60px; left:20px; bottom:0;}
+	.sub_logo{position:absolute; width:40px; right:20px; bottom:0;}
 
-.content_area{width:100%; /*height:520px;*/ position:absolute; top:50%; left:0; margin:-120px 0 0 0;}
-	.page_area{width:40px; height:40px; position:absolute; top:-60px; left:50%; margin:0 0 0 -20px;
+.content_area{width:100%; height:100%; position:absolute; top:0; left:0;}
+	.page_area{width:40px; height:40px; position:absolute; top:20px; left:50%; margin:0 0 0 -20px;
 		background:url(../images/bg_page.png) no-repeat center; font-size:13px; color:#03e0be; background-size:cover;
 	}
 		.current_page{position:absolute; left:3px; top:3px;}
 		.total_page{position:absolute; right:3px; bottom:3px;}
 
-	.text_crop{width:100%; /*height:520px;*/ position:relative;/*  top:50%; left:50%; margin:-260px 0 0 -490px;overflow:hidden;*/ padding-top:87%;}
-		.text_area{width:100%; /*height:520px;*/ position:absolute; top:0; left:0;}
+	.text_crop{width:100%; height:100%; max-width:980px; position:relative; margin:0 auto;}
+		.text_area{width:100%; position:absolute; top:50%; left:0;}
+		.text_area.content_2{top:0; height:100%;}
 		.text_area>img{width:100%;}
-		.info{/*width:648px; margin:50px auto 0;*/padding:0 30px;}
+		.text_area .content_2_wrap{width:100%; max-width:720px; height:100%; margin:0 auto; padding:50px 0; box-sizing:border-box}
+		.text_area .content_2_wrap .content_frame{height:100%; overflow:hidden;}
+		.info{/*width:648px; margin:50px auto 0;*/padding:10px 30px 0;}
 		.info:after{content:""; display:block; clear:both;}
 		.info label{display:block; float:left; width:55px; height:25px; line-height:25px; margin:0; padding:5px 0 0 0; color:#03e0be; font-size:12px; position:absolute; left:0;}
 		.info input{display:block; float:left; margin:0; width:100%; height:25px; border:none; border-bottom:1px solid #03e0be; background:transparent;
 			font-size:12px; color:#03e0be; font-family:'돋움', sans-serif;
 		}
 
-			.info_title{margin-bottom:20px;}
+			.info_title{margin-bottom:20px; max-width:648px; margin:0 auto; max-width:342px;}
 			.info_title img{width:100%;}
 			
 			.info_left{float:left; width:100%;}
-			.info_right{float:left; width:100%;}
-			.info_right:after{content:""; display:block; clear:both;}
-			.info_left>div, .info_right>div{padding-left:50px; position:relative; width:100%; box-sizing:border-box;}
-			
-			.info_left>div:after,
-			.info_right>div:after{content:""; display:block; clear:both;}
+			.info_left>div{padding-left:50px; position:relative; width:100%; box-sizing:border-box;}
+			.info_left>div:after{content:""; display:block; clear:both;}
 			
 			.info_content{width:100%; margin-top:10px; float:left; box-sizing:border-box; position:relative;}
 			.info_content:after{content:""; display:block; clear:both;}
 			.info_content label{line-height:1; padding-top:0; position:relative;}
-			.info_content textarea{display:block; float:left; margin:0; border:1px solid #03e0be; background:transparent; width:587px;
+			.info_content textarea{display:block; float:left; margin:0; border:1px solid #03e0be; background:transparent; width:100%; height:100px;
 				font-family:'돋움', sans-serif; font-size:15px; color:#03e0be;
 			}
-		
-		
+			
+			.btn{clear:both; display:block; width:100px; height:27px; text-indent:-99999em;
+				background:url(../images/content_6_btn.png) no-repeat 0 0; background-size:cover; margin:10px auto 0; 
+			}
+			
 		.map_wrap{/*width:750px; margin:50px auto 0;*/}
 		.map_wrap:after{content:""; display:block; clear:both;}
 		.map_wrap label{display:block; float:left; width:55px; height:25px; line-height:25px; margin:0; padding:5px 0 0 0; color:#03e0be;}
@@ -149,16 +153,11 @@ html, body{width:100%; height:100%;}
 			font-size:13px; color:#03e0be; font-family:'돋움', sans-serif;
 		}
 			
-			.info_title.map{text-align:center; margin-bottom:20px; width:100%}
+			.info_title.map{text-align:center; margin-bottom:20px; max-width:394px;}
 			.info_title.map img{display:inline-block; width:100%;}
-			
 			.info_content.map{/*width:750px;*/ height:200px; border:1px solid #03e0be; margin:0 auto; float:none;}
-			.info_content label{line-height:1; padding-top:0;}
-			.info_content textarea{display:block; float:left; margin:0; border:1px solid #03e0be; background:transparent; width:100%;
-				font-family:'돋움', sans-serif; font-size:15px; color:#03e0be; box-sizing:border-box; height:120px;
-			}
 			
-			.contact{width:247px; height:12px; margin:20px auto 0;}
+			.contact{width:247px; height:27px; margin:20px auto 0;}
 			
 			
 	
@@ -166,6 +165,27 @@ html, body{width:100%; height:100%;}
 	.page_dot a{display:block; width:11px; height:11px; text-indent:-99999em; background:url(../images/bg_page_dot.png) no-repeat 0 0; float:left; margin-right:10px;}
 	.page_dot a:last-child{margin-right:0;}
 	.page_dot a.on{background-position:-22px 0;}
+	
+@media all and (max-width:767px){
+	.logo_area{height:40px;}
+	.page_area{width:35px; height:35px; top:55px; left:20px; margin:0;}
+	.current_page{left:0; top:0;}
+	.total_page{right:0; bottom:0;}
+}	
 
-
+@media all and (min-width:550px) and (max-width:767px){
+	
+	.logo_area{height:40px;}
+	.page_area{width:35px; height:35px; top:55px; left:20px; margin:0;}
+	.current_page{left:0; top:0;}
+	.total_page{right:0; bottom:0;}
+	
+	.info{padding:0 75px;}
+	.info input{margin:10px 0 3px;}
+	.info_left{width:48%;}
+	.info_content{float:right; width:48%;}
+	.info_content textarea{width:100%; height:116px; padding:0;}
+	
+	.info_content.map{width:100%; height:100px;}
+}
 

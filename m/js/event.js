@@ -183,6 +183,10 @@ $(function(){
 		swpContent.swipeStart($swpObjContent, touchedIndex);
 		
 	});
+	
+	$swpObjClient.on('touchstart', function(e){
+		e.preventDefault();
+	});
 	// swipe move
 	$swpObjContent.on('touchmove', function(e){
 		var distanceX = oldLeft - e.originalEvent.touches[0].clientX;

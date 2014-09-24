@@ -51,7 +51,6 @@ $(function(){
 		var winHeight = $(window).height();
 		contentWidth = $('.text_crop').width();
 		
-		console.log(currentIndex);
 		$bannerItem.eq(currentIndex).siblings().css({left:contentWidth, opacity:0});
 		
 		$('.text_area').each(function(i){
@@ -175,7 +174,6 @@ $(function(){
 	// swipe start 
 	$swpObjContent.on('touchstart', function(e){
 		
-		e.preventDefault();
 		touchedIndex = $(this).index();
 		
 		oldLeft = originalLeft = e.originalEvent.touches[0].clientX;

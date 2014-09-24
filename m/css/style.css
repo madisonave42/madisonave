@@ -136,9 +136,9 @@ html, body{width:100%; height:100%;}
 			.info_left>div{padding-left:50px; position:relative; width:100%; box-sizing:border-box;}
 			.info_left>div:after{content:""; display:block; clear:both;}
 			
-			.info_content{width:100%; margin-top:10px; float:left; box-sizing:border-box; position:relative;}
+			.info_content{width:100%; margin-top:5px; float:left; box-sizing:border-box; position:relative;}
 			.info_content:after{content:""; display:block; clear:both;}
-			.info_content label{line-height:1; padding-top:0; position:relative;}
+			.info_content label{/*line-height:1;*/ padding-top:0; position:relative;}
 			.info_content textarea{display:block; float:left; margin:0; border:1px solid #03e0be; background:transparent; width:100%; height:100px;
 				font-family:'돋움', sans-serif; font-size:15px; color:#03e0be;
 			}
@@ -156,8 +156,11 @@ html, body{width:100%; height:100%;}
 			
 			.info_title.map{text-align:center; margin-bottom:20px; max-width:394px;}
 			.info_title.map img{display:inline-block; width:100%;}
-			.info_content.map{/*width:750px;*/ height:200px; border:1px solid #03e0be; margin:0 auto; float:none;}
-			
+			.info_content.map{/*width:750px;*/ height:200px; border:1px solid #03e0be; margin:0 auto; float:none; overflow:hidden; position:relative;}
+			.info_content.map a{display:block; position:relative; top:50%; left:50%; margin:-100px 0 0 -210px;}
+			.info_content.map p{position:absolute; top:10px; left:10px; padding:2px; color:#03e0be; font-family:'돋움', sans-serif; font-size:11px;
+				background-color:#000;
+			}
 			.contact{width:247px; height:27px; margin:20px auto 0;}
 			
 			
@@ -183,13 +186,14 @@ html, body{width:100%; height:100%;}
 	.current_page{left:0; top:0;}
 	.total_page{right:0; bottom:0;}
 	
-	.text_area.content_2{padding:50px 0;}
+	.text_area.content_2{padding:40px 0;}
 	
 	.info{padding:0 75px;}
-	.info input{margin:10px 0 3px;}
+	.info input{margin:5px 0 0;}
+	.info_title{padding:0 76px;}
 	.info_left{width:48%;}
 	.info_content{float:right; width:48%;}
-	.info_content textarea{width:100%; height:116px; padding:0;}
+	.info_content textarea{width:100%; height:93px; padding:0;}
 	
 	.info_content.map{width:100%; height:100px;}
 }

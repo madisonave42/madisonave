@@ -54,7 +54,7 @@
 		<div class="text_crop">
 			
 			<div class="text_area">
-				<img src="images/content_1.png" />
+					<img src="images/content_1.png" />
 			</div>
 			
 			<div class="text_area content_2">
@@ -110,42 +110,9 @@
 				<div class="info map_wrap">
 					<div class="info_title map"><img src="images/content_7_title.png" /></div>
 					<div id="map-canvas" class="info_content map">
-						
+						<a target="_blank" href="https://maps.google.co.kr/maps?ll=37.5198167,127.0309801&z=16&q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EA%B0%95%EB%82%A8%EA%B5%AC+%EB%85%BC%ED%98%842%EB%8F%99+61-19&output=classic&dg=ntvb"><img src="images/map.png" /></a>
+						<p>클릭하면 지도를 크게 볼 수 있습니다.</p>
 					</div>
-					<script>
-						function mapInit(){
-							var madison = new google.maps.LatLng(37.519801,127.030968); 
-							var mapOptions = {
-								zoom:17,
-								center: madison
-							};
-							var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-							
-							var marker = new google.maps.Marker({
-								map:map,
-								draggable:true,
-								animation:google.maps.Animation.DROP,
-								position:madison,
-							});
-							
-							//var contentStr = '<div><img src="images/logo.png" style="width:70%" /></div>';
-							
-							//var infoWin = new google.maps.InfoWindow({
-							//	content: contentStr,
-							//	maxWidth: 50
-							//});
-							
-							//infoWin.open(map, marker);
-						}
-						function loadScript(){
-							var script = document.createElement('script');
-							script.type = 'text/javascript';
-							script.src = 'https://maps.googleapis.com/maps/api/js?v3.exp&sensor=false&callback=mapInit';
-							document.body.appendChild(script);
-						}
-						
-						window.onload = loadScript;
-					</script>
 					<div class="contact"><div><img src="images/content_7_contact.png" /></div></div>
 				</div>
 			</div>

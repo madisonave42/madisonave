@@ -21,10 +21,6 @@ Swipe = function( $banner ){
 		this.bannerWidth = $bannerItem.width();
 		this.currentIndex = touchedIndex;
 		
-		//console.log(touchedIndex);
-		//console.log(this.bannerSize);
-		//console.log(this.bannerWidth);
-		
 		// next
 		if( this.currentIndex+2 > this.bannerSize ){ this.nextTouchedIndex = 0; }
 		else{ this.nextTouchedIndex = this.currentIndex+1; }
@@ -43,7 +39,6 @@ Swipe = function( $banner ){
 	
 	Swipe.prototype.swipeUpDown = function( $bannerItem, distance ){
 		$bannerItem.stop().animate({top:'-=' + distance}, 0);
-		console.log( $bannerItem.position().top );
 	};
 	
 	Swipe.prototype.swipeEnd = function( $bannerItem, $pageDot, diff ){
@@ -52,8 +47,8 @@ Swipe = function( $banner ){
 			
 			// next
 			if( diff > 0 ){
-				$bannerItem.eq( this.currentIndex ).stop().animate({left:-this.bannerWidth, opacity:0}, 100);
-				$bannerItem.eq( this.nextTouchedIndex ).stop().animate({left:0, opacity:1}, 100);
+				$bannerItem.eq( this.currentIndex ).stop().animate({left:-this.bannerWidth, opacity:0}, 300);
+				$bannerItem.eq( this.nextTouchedIndex ).stop().animate({left:0, opacity:1}, 300);
 				
 				$pageDot.find('a').removeClass('on');
 				$pageDot.find('a').eq(this.nextTouchedIndex).addClass('on');
@@ -61,8 +56,8 @@ Swipe = function( $banner ){
 				this.currentIndex = this.nextTouchedIndex;
 			// prev	
 			} else {
-				$bannerItem.eq( this.currentIndex ).stop().animate({left:this.bannerWidth, opacity:0}, 100);
-				$bannerItem.eq( this.prevTouchedIndex ).stop().animate({left:0, opacity:1}, 100);
+				$bannerItem.eq( this.currentIndex ).stop().animate({left:this.bannerWidth, opacity:0}, 300);
+				$bannerItem.eq( this.prevTouchedIndex ).stop().animate({left:0, opacity:1}, 300);
 
 				$pageDot.find('a').removeClass('on');
 				$pageDot.find('a').eq(this.prevTouchedIndex).addClass('on');
@@ -72,9 +67,9 @@ Swipe = function( $banner ){
 			
 		} else {
 			
-			$bannerItem.eq( this.currentIndex ).stop().animate({left:0}, 100);
-			$bannerItem.eq( this.prevTouchedIndex ).stop().animate({left:-this.bannerWidth}, 100);
-			$bannerItem.eq( this.nextTouchedIndex ).stop().animate({left:this.bannerWidth}, 100);
+			$bannerItem.eq( this.currentIndex ).stop().animate({left:0}, 300);
+			$bannerItem.eq( this.prevTouchedIndex ).stop().animate({left:-this.bannerWidth}, 300);
+			$bannerItem.eq( this.nextTouchedIndex ).stop().animate({left:this.bannerWidth}, 300);
 			
 		}
 		
@@ -84,8 +79,12 @@ Swipe = function( $banner ){
 	
 	Swipe.prototype.swipeUpDownEnd = function( $bannerItem ){
 		var topPosition;
+		var wrapHeight = $('.content_2_wrap').height();
+		var imgHeight = $('.content_frame').height();
+		var maxTop = wrapHeight - imgHeight;
+		
 		if( $bannerItem.position().top > 0 ){topPosition = 0;}
-		//else if( $bannerItem.position().top < -320 ){topPosition = -300;}
+		else if( $bannerItem.position().top < maxTop ){console.log(1);topPosition = maxTop;}
 		
 		$bannerItem.stop().animate({top:topPosition}, 100);
 	};

@@ -1,5 +1,27 @@
 $(function(){
 	
+	// loader
+	(function(){
+		var count = 0;
+		$('.loading_image img').on('load', function(){
+			$(this).parent('.loading_image').text('loading...');
+		});
+		loaderID = setInterval(function(){
+			if( count >= 38 ){count = 0;}
+			$('.loading_image').css({'background-position': -(count*100) });
+			count++;		
+		}, 40);
+		
+		$(window).on('load', function(){
+			setTimeout(function(){
+				var $loader = $('.loader .loading_image');
+				$loader.stop().hide();
+				$('.loader').delay(500).fadeOut();
+				$('.wrap').delay(500).fadeIn();
+			}, 5000);
+		});
+	})();
+	
 	// variable
 	var $bannerItem = $('.text_area');
 	var $currentBanner;

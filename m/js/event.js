@@ -1,5 +1,27 @@
 $(function(){
 	
+	// loader
+	(function(){
+		var count = 0;
+		$('.loading_image img').on('load', function(){
+			$(this).parent('.loading_image').text('loading...');
+		});
+		loaderID = setInterval(function(){
+			if( count >= 38 ){count = 0;}
+			$('.loading_image').css({'background-position': -(count*100) });
+			count++;		
+		}, 40);
+		
+		$(window).on('load', function(){
+			setTimeout(function(){
+				var $loader = $('.loader .loading_image');
+				$loader.stop().hide();
+				$('.loader').delay(500).fadeOut();
+				$('.wrap').delay(500).fadeIn();
+			}, 5000);
+		});
+	})();
+	
 	// variable
 	var $bannerItem = $('.text_area');
 	var $currentBanner;
@@ -127,7 +149,7 @@ $(function(){
 	// exec & event
 	
 	$(window).on('load', function(){
-		init();	
+		init();
 	});
 	
 	// window resize
@@ -195,7 +217,7 @@ $(function(){
 		oldTop = e.originalEvent.touches[0].clientY;
 		var slope = distanceY / distanceX;
 		if( Math.abs(slope) < 0.5 ) {
-			//e.preventDefault();
+			e.preventDefault();
 			swpContent.swipeMove( $swpObjContent, distanceX );
 		} else {
 			swpClient.swipeUpDown( $swpObjClient, distanceY );

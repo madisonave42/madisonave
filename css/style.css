@@ -51,7 +51,7 @@ html {
 }
 body {
 	font-family: 'Noto Sans', sans-serif; font-size:13px; color:#fff;
-	line-height: 1;	line-height:1.4\0; letter-spacing:-0.25px;
+	line-height: 1; letter-spacing:-0.25px;
 }
 ol, ul {
 	list-style: none;

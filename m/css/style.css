@@ -143,7 +143,7 @@ html, body{width:100%; height:100%;}
 				font-family:'돋움', sans-serif; font-size:15px; color:#03e0be;
 			}
 			
-			.btn{clear:both; display:block; width:100px; height:27px; text-indent:-99999em;
+			.btn{clear:both; display:block; width:100px; height:27px; text-indent:-99999em; border:0;
 				background:url(../images/content_6_btn.png) no-repeat 0 0; background-size:cover; margin:10px auto 0; 
 			}
 			
@@ -156,8 +156,9 @@ html, body{width:100%; height:100%;}
 			
 			.info_title.map{text-align:center; margin-bottom:20px; max-width:394px;}
 			.info_title.map img{display:inline-block; width:100%;}
-			.info_content.map{/*width:750px;*/ height:200px; border:1px solid #03e0be; margin:0 auto; float:none; overflow:hidden; position:relative;}
-			.info_content.map a{display:block; position:relative; top:50%; left:50%; margin:-100px 0 0 -210px;}
+			.info_content.map{max-width:750px; height:200px; border:1px solid #03e0be; margin:0 auto; float:none; overflow:hidden; position:relative;}
+			.info_content.map a{width:100%; height:100%; display:block; position:relative;/* top:50%; left:50%; margin:-100px 0 0 -375px;*/}
+			.info_content.map img{width:100%;}
 			.info_content.map p{position:absolute; top:10px; left:10px; padding:2px; color:#03e0be; font-family:'돋움', sans-serif; font-size:11px;
 				background-color:#000;
 			}
@@ -179,7 +180,7 @@ html, body{width:100%; height:100%;}
 
 }	
 
-@media all and (min-width:550px) and (max-width:767px){
+@media all and (min-width:480px) and (max-width:767px){
 	
 	.logo_area{height:40px;}
 	.page_area{width:35px; height:35px; top:55px; left:20px; margin:0;}
@@ -200,4 +201,8 @@ html, body{width:100%; height:100%;}
 
 .loader{width:100%; height:100%; position:absolute; top:0; left:0; background:#000; z-index:9000; text-indent:-99999em;}
 .loader .loading_image{width:100px; height:100px; position:absolute; top:50%; left:50%; margin:-50px 0 0 -50px; background:url(../images/loading_sprite.png) no-repeat 0 0;}
+
+@media all and (max-width:480px){
+	.info_content.map a{width:750px; height:100%; display:block; position:relative; top:50%; left:50%; margin:-100px 0 0 -375px;}
+}
 

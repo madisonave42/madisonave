@@ -3,9 +3,9 @@ $(function(){
 	// loader
 	(function(){
 		var count = 0;
-		$('.loading_image img').on('load', function(){
-			$(this).parent('.loading_image').text('loading...');
-		});
+		//$('.loading_image img').on('load', function(){
+		//	$(this).parent('.loading_image').text('loading...');
+		//});
 		loaderID = setInterval(function(){
 			if( count >= 38 ){count = 0;}
 			$('.loading_image').css({'background-position': -(count*100) });
@@ -18,6 +18,9 @@ $(function(){
 				$loader.stop().hide();
 				$('.loader').delay(500).fadeOut();
 				$('.wrap').delay(500).fadeIn();
+				setTimeout(function(){
+					$('.loader').remove();
+				}, 1000);
 			}, 5000);
 		});
 	})();
@@ -132,13 +135,10 @@ $(function(){
 	
 	
 	$('.page_dot a').on('click', function(e){
-		
 		e.preventDefault();
-		
-		if($('.text_area').is(':animated')){return false;}
-		clearInterval(tID);
-		
 		var clickIndex = $(this).index();
+		
+		if($('.text_area').is(':animated') || clickIndex == currentIndex){return false;}
 		move(clickIndex);
 	});
 	

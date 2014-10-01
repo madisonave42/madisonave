@@ -78,34 +78,32 @@
 			</div>
 			
 			<div class="text_area">
-				<form name="frm" method="post" action="mail.php">
-					<div class="info">
-						<div class="info_title"><img src="images/content_6_title.png" /></div>
-						<div class="info_left">
-							<div>
-								<label for="name">Name</label>
-								<input type="text" name="name"/>
-							</div>
-							<div>
-								<label for="name">Phone</label>
-								<input type="text" name="phone"/>
-							</div>
-							<div>
-								<label for="name">E-Mail</label>
-								<input type="text" name="email"/>
-							</div>
-							<div>
-								<label for="name">Title</label>
-								<input type="text" name="subject" />
-							</div>
+				<div class="info">
+					<div class="info_title"><img src="images/content_6_title.png" /></div>
+					<div class="info_left">
+						<div>
+							<label for="name">Name</label>
+							<input type="text" />
 						</div>
-						<div class="info_content">
-							<label for="name">Content</label>
-							<textarea cols="50" rows="13" name="content"></textarea>
+						<div>
+							<label for="name">Phone</label>
+							<input type="text" />
+						</div>
+						<div>
+							<label for="name">E-Mail</label>
+							<input type="text" />
+						</div>
+						<div>
+							<label for="name">Title</label>
+							<input type="text" />
 						</div>
 					</div>
-					<input type="button" onclick="Send();" value="문의하기" class="btn">
-				</form>
+					<div class="info_content">
+						<label for="name">Content</label>
+						<textarea cols="50" rows="13"></textarea>
+					</div>
+				</div>
+				<a class="btn">문의하기</a>
 			</div>
 			
 			<div class="text_area">
@@ -113,7 +111,7 @@
 					<div class="info_title map"><img src="images/content_7_title.png" /></div>
 					<div id="map-canvas" class="info_content map">
 						<a target="_blank" href="https://maps.google.co.kr/maps?ll=37.5198167,127.0309801&z=16&q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C+%EA%B0%95%EB%82%A8%EA%B5%AC+%EB%85%BC%ED%98%842%EB%8F%99+61-19&output=classic&dg=ntvb"><img src="images/map.png" /></a>
-						<p>클릭하면 실제 지도를 보실 수 있습니다.</p>
+						<p>클릭하면 지도를 크게 볼 수 있습니다.</p>
 					</div>
 					<div class="contact"><div><img src="images/content_7_contact.png" /></div></div>
 				</div>
@@ -136,37 +134,5 @@
 <div class="loader">
 	<div class="loading_image"><img src="images/loading_sprite.png" style="display:none;" /></div>
 </div>
-<script>
-
-  function Send(){
-  if(document.frm.name.value.length==0) {
-    alert("이름을 입력하세요.");
-    frm.name.focus();
-    return false;
-  }
-  if(document.frm.email.value.length==0) {
-    alert("이메일을 입력하세요.");
-    frm.email.focus();
-    return false;
-  }
-  if(document.frm.phone.value.length==0) {
-    alert("연락처를 입력하세요.");
-    frm.phone.focus();
-    return false;
-  }
-  if(document.frm.subject.value.length==0) {
-    alert("제목을 입력하세요.");
-    frm.subject.focus();
-    return false;
-  }
-  if(document.frm.content.value.length==0) {
-    alert("제안내용을 입력하세요.");
-    frm.content.focus();
-    return false;
-  }
-
-  document.frm.submit();
- }
-</script>
 </body>
 </html>

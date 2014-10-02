@@ -5,96 +5,76 @@ $form_title = iconv('utf-8', 'euc-kr', $_POST[subject]);
 $from_phone = iconv('utf-8', 'euc-kr', $_POST[phone]);
 $from_content = iconv('utf-8', 'euc-kr', $_POST[content]);
 
+// main reciever
 $to = "bscho@madisonave.co.kr";
-//$toboss = "one@madisonave.co.kr";
-$toboss = "burning5@madisonave.co.kr";
-$test = "ministori@madisonave.co.kr";
+$toboss = "one@madisonave.co.kr";
 
-$subject = "[Madison Avenue Website] ".$form_title;
+// test
+//$to     = "ministori@madisonave.co.kr";
+//$toboss = "ministori@madisonave.co.kr";
+
+$subject = "[Madison Avenue] ".$form_title;
 $from = $from_email;
-//$bodytext = "<br />이름 :".$from_name;
-//$bodytext .= "<br />연락처 :".$from_phone;
-//$bodytext .= "<br />이메일 :".$from_email."<br />";
-//$bodytext .= $from_content;
 $content = str_replace("\n", "<br />", $from_content);
-//$bodytext .= $content;
 
 $bodytext = '
-<table style="width:700px; border-collapse:collapse;" cellpadding="0" cellspacing="0">
-	<thead>
-		<tr>
-			<th>
-				<img src="http://www.madisonave.co.kr/images/mail_header.png" style="display:block;" />
-			</th>
-		</tr>
-	</thead>
+<table style="width:644px; border-collapse:collapse; border:1px solid #999; font-family:dotum, sans-serif; font-size:13px;" cellpadding="0" cellspacing="0" >
+	<colgroup>
+		<col style="width:70px;" />
+		<col style="width:auto" />
+		<col style="width:70px;" />
+		<col style="width:auto;" />
+	</colgroup>
 	<tbody>
 		<tr>
-			<td style="padding:0 28px 30px; background:#192322;">
-				<table style="width:644px; border-collapse:collapse; color:#01e1bf; font-family:"돋움", sans-serif; font-size:13px;" cellpadding="0" cellspacing="0" >
-					<colgroup>
-						<col style="width:70px;" />
-						<col style="width:auto" />
-						<col style="width:70px;" />
-						<col style="width:auto;" />
-					</colgroup>
-					<tbody>
-						<tr>
-							<td colspan="4">
-								<img src="http://www.madisonave.co.kr/images/blank.png" />
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<img src="http://www.madisonave.co.kr/images/name.png" />
-							</td>
-							<td style="padding:5px 0 0 0; color:#01e1bf; font-family:dotum, sans-serif; font-size:13px;">
-								'. $from_name .'
-							</td>
-							<td>
-								<img src="http://www.madisonave.co.kr/images/email.png" />
-							</td>
-							<td style="padding:5px 0 0 0; color:#01e1bf; font-family:dotum, sans-serif; font-size:13px;">
-								'. $from_email .'
-							</td>
-						</tr>
-						<tr>
-							<td colspan="4">
-								<img src="http://www.madisonave.co.kr/images/blank.png" />
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<img src="http://www.madisonave.co.kr/images/phone.png" />
-							</td>
-							<td style="padding:5px 0 0 0; color:#01e1bf; font-family:dotum, sans-serif; font-size:13px;">
-								'. $from_phone .'
-							</td>
-							<td>
-								<img src="http://www.madisonave.co.kr/images/title.png" />
-							</td>
-							<td style="padding:5px 0 0 0; color:#01e1bf; font-family:dotum, sans-serif; font-size:13px;">
-								'. $form_title .'
-							</td>
-						</tr>
-						<tr>
-							<td colspan="4">
-								<img src="http://www.madisonave.co.kr/images/blank.png" />
-							</td>
-						</tr>
-						<tr>
-							<td style="padding-bottom:10px;">
-								<img src="http://www.madisonave.co.kr/images/content.png" />
-							</td>
-							<td colspan="3" style="background:#192322;"> </td>
-						</tr>
-						<tr>
-							<td colspan="4" style="padding:20px; text-align:justify; line-height:1.6; color:#01e1bf; font-family:dotum, sans-serif; font-size:13px;">
-								'. $content .'
-							</td>
-						</tr>
-					</tbody>
-				</table>
+			<td colspan="4" style="height:30px;">
+			</td>
+		</tr>
+		<tr>
+			<td style="padding:0 0 0 20px;">
+				Name
+			</td>
+			<td>
+				'. $from_name .'
+			</td>
+			<td style="padding:0 0 0 20px;">
+				Email
+			</td>
+			<td>
+				'. $from_email .'
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" style="height:30px;">
+			</td>
+		</tr>
+		<tr>
+			<td style="padding:0 0 0 20px;">
+				Phone
+			</td>
+			<td>
+				'. $from_phone .'
+			</td>
+			<td style="padding:0 0 0 20px;">
+				title
+			</td>
+			<td>
+				'. $form_title .'
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" style="height:30px;">
+			</td>
+		</tr>
+		<tr>
+			<td style="padding:0 0 10px 20px;">
+				content
+			</td>
+			<td colspan="3"> </td>
+		</tr>
+		<tr>
+			<td colspan="4" style="padding:10px 40px 30px; text-align:justify; line-height:1.6;">
+				'. $content .'
 			</td>
 		</tr>
 	</tbody>

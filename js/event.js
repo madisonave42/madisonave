@@ -67,20 +67,22 @@ $(function(){
 			$currentBanner.stop().animate({
 				left:-320, opacity:0,
 				width:490, height:260
-			}, 1000);
+			}, 1000, function(){ $(this).css({display:'none'}); });
 			
-			$nextBanner.css({left:660, width:490, height:260});
+			$nextBanner.css({left:980, width:490, height:260, display:'block', opacity:0});
 			$nextBanner.stop().animate({
 				left:0, opacity:1,
 				width:980, height:520
 			}, 1000);
+			
+			
 		} else {
 			$currentBanner.stop().animate({
-				left:-490, opacity:0,
+				left:-980, opacity:0,
 				width:980, height:520
-			}, 700);
+			}, 700, function(){ $(this).css({display:'none'}); });
 			
-			$nextBanner.css({left:660, top:0, width:980, height:520});
+			$nextBanner.css({left:980, top:0, width:980, height:520, display:'block', opacity:0});
 			$nextBanner.stop().delay(300).animate({
 				left:0, opacity:1,
 				width:980, height:520

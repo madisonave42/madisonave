@@ -84,7 +84,8 @@ input[type=submit], input[type=image], button{
 select{font-family: 'Noto Sans', sans-serif; font-size:13px; font-weight:300; color:#777;}
 input,
 label,
-selectbox {vertical-align:middle;}
+select,
+textarea{vertical-align:middle; -webkit-appearance:none; border-radius:0; /* turn off - border radius */}
 img{display:block;}
 address{font-style:normal;}
 strong, h1{color:#231f20; font-weight:bold;}

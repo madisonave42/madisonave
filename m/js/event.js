@@ -59,6 +59,10 @@ $(function(){
 		
 		touchedIndex = $(this).index();
 		
+		if( touchedIndex <5 ){
+			e.preventDefault();
+		}
+		
 		oldLeft = originalLeft = e.originalEvent.touches[0].clientX;
 		oldTop = originalTop = e.originalEvent.touches[0].clientY;
 		originalPosition = $(this).position().left;

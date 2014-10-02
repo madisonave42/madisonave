@@ -168,6 +168,8 @@ Madison = function(){
 				$('.bg').eq(currentIndex).fadeOut();
 				$('.bg').eq(nextTouchedIndex).fadeIn();
 				
+				$('.page_area .current_page').html('0'+ (nextTouchedIndex+1) );
+				
 				currentIndex = nextTouchedIndex;
 			// prev	
 			} else {
@@ -179,6 +181,8 @@ Madison = function(){
 				
 				$('.bg').eq(currentIndex).fadeOut();
 				$('.bg').eq(prevTouchedIndex).fadeIn();
+				
+				$('.page_area .current_page').html('0'+ (prevTouchedIndex+1) );
 				
 				currentIndex = prevTouchedIndex;
 			}
